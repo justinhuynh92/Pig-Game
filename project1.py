@@ -28,9 +28,10 @@ player_scores = [0 for _ in range(players)]
 while max(player_scores) < max_score:
 
     for player_idx in range(players):
+        print("\nPlayer number", player_idx + 1, "turn has just started!\n")
         current_score = 0
 
-        #create one person's entire turn
+        #create one person's entire turn, starting with asking
         while True:
             should_roll = input("Would you like to roll (y)? ")
             #check if its lower case before proceeding
