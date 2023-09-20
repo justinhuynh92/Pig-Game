@@ -27,15 +27,27 @@ player_scores = [0 for _ in range(players)]
 #keep going as long as no one's reached the max score
 while max(player_scores) < max_score:
 
-    current_score = 0
+    for player_idx in range(players):
+        current_score = 0
 
-    should_roll = input("Would you like to roll (y)? ")
-    #check if its lower case before proceeding
-    if should_roll.lower() != "y":
-        break
+        #create one person's entire turn
+        while True:
+            should_roll = input("Would you like to roll (y)? ")
+            #check if its lower case before proceeding
+            if should_roll.lower() != "y":
+                break
 
-    value = roll()
-    if value == 0:
-        print("You rolled a 1! Turn done!")
-    else:
-        print("You rolled a:", value)
+            value = roll()
+            if value == 1:
+                print("You rolled a 1! Turn done!")
+                current_score = 0
+                break
+            else:
+                current_score += value
+                print("You rolled a:", value)
+
+            print("Your score is:", current_score)
+
+        #adding current score to total score
+        player_scores[player_idx] += current_score
+        print("Your total score is:", player_scores[player_idx])
