@@ -21,4 +21,21 @@ while True:
     else:
         print("Invalid, try again.")
 
-print(players)
+#make a list comprehension that puts a 0 inside the list for every player we have
+max_score = 50
+player_scores = [0 for _ in range(players)]
+#keep going as long as no one's reached the max score
+while max(player_scores) < max_score:
+
+    current_score = 0
+
+    should_roll = input("Would you like to roll (y)? ")
+    #check if its lower case before proceeding
+    if should_roll.lower() != "y":
+        break
+
+    value = roll()
+    if value == 0:
+        print("You rolled a 1! Turn done!")
+    else:
+        print("You rolled a:", value)
